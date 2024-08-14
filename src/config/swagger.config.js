@@ -3,12 +3,13 @@ const swaggerUi = require("swagger-ui-express")
 function SwaggerConfig(app){
     const swaggerDocument= swaggerJsDoc({
         swaggerDefinition:{
-            opeanapi:"3.0.1",
+            openapi:"3.0.1",
             info:{
                 title: "order",
                 description: "Developed by Hamidreza Shafiei",
                 version: "1.0.0"
             }
+            
         },
         apis: [process.cwd() + "/src/modules/**/*.swagger.js"]
     })

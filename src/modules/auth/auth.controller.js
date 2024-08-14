@@ -12,7 +12,7 @@ class AuthController{
 
     async sendOTP(req, res, next) {
         try {
-            const {mobile} = req.body
+            const {mobile} = req.body            
              await this.#service.sendOTP(mobile)
             return res.json({
                 message: AuthMessage.SendOtoSuccessfully
@@ -27,10 +27,11 @@ class AuthController{
             const {mobile, code} = req.body
             const token = await this.#service.checkOTP(mobile, code)
             return res.cookie(CookieNames.AccessToken, token, {
-                htppOnly: true,
+                httpOnly: true,
                 secure: process.env.Node_Env === NodeEnv.Production
             }).status(200).json({
-                message: AuthMessage.LoginSuccessfully
+                message: AuthMessage.LoginSuccessfully,
+                token
             })
             
         } catch (error) {
@@ -47,4 +48,4 @@ class AuthController{
         }
     }
 }
-module.exports = AuthController()
+module.exports = new AuthController()
