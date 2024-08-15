@@ -8,11 +8,7 @@ class UserService{
         autoBind(this)
         this.#model = UserModel
     }
-    async updateUserProfile(userId, updateData) {
-        const user = await this.#model.findByIdAndUpdate(userId, updateData, { new: true });
-        if (!user) throw new createHttpError.NotFound('User not found');
-        return user;
-    }
+ 
 
 
 
