@@ -18,25 +18,58 @@ class AuthController{
                 message: AuthMessage.SendOtoSuccessfully
             })
         } catch (error) {
-            next(error)
+            return res.status(error.status || 500).json({
+                message: "ارسال کد صورت نگرفت",
+                error: error.message
+            })
             
         }
     }
-    async checkOTP(req, res, next) {
+async checkOTP(req, res, next) {
+    try {
+        const { mobile, code } = req.body;
+        const { accessToken, refreshToken } = await this.#service.checkOTP(mobile, code);
+        
+        // ذخیره accessToken در کوکی
+        res.cookie(CookieNames.AccessToken, accessToken, {
+            httpOnly: true,
+            secure: process.env.Node_Env === NodeEnv.Production,
+            sameSite: 'strict',
+            maxAge: 24 * 60 * 60 * 1000 // یک روز
+        });
+        
+        // ذخیره refreshToken در کوکی
+        res.cookie(CookieNames.RefreshToken, refreshToken, {
+            httpOnly: true,
+            secure: process.env.Node_Env === NodeEnv.Production,
+            sameSite: 'strict',
+            maxAge: 30 * 24 * 60 * 60 * 1000 // سی روز
+        });
+
+        return res.status(200).json({
+            message: AuthMessage.LoginSuccessfully,
+            accessToken,
+            refreshToken
+        });
+    } catch (error) {
+        return res.status(error.status || 500).json({
+            message: "ورود ناموفق بود",
+            error: error.message
+        });
+    }
+}
+
+    async checkRefreshToken (req, res, next) {
         try {
-            const {mobile, code} = req.body
-            const token = await this.#service.checkOTP(mobile, code)
-            return res.cookie(CookieNames.AccessToken, token, {
-                httpOnly: true,
-                secure: process.env.Node_Env === NodeEnv.Production
-            }).status(200).json({
+            const {refreshToken: token} = req.body;
+            const {accessToken, refreshToken} = await this.#service.checkRefreshToken(token);
+            return res.status(200).json({
                 message: AuthMessage.LoginSuccessfully,
-                token
-            })
-            
+                accessToken,
+                refreshToken
+            });
         } catch (error) {
-            next(error)
-            
+            next(error);
         }
     }
     async logOut(req, res, next) {

@@ -40,18 +40,62 @@ class AuthService{
         if(!user.verifiedMobile){
             user.verifiedMobile = true
         }
-        const accessToken = this.siginToken({mobile, id: user._id})
+        const accessToken = this.signToken({mobile, id: user._id})
+        const refreshToken = this.signToken({ mobile, id: user._id }, "1y");
+
         user.accessToken = accessToken
+        user.refreshToken = refreshToken;
+
         await user.save()
-        return accessToken
+        return{
+            accessToken,
+            refreshToken,
+
+        } 
+
     }
     async checkExistByMobile(mobile){
         const user = await this.#model.findOne({mobile})
         if(!user) throw new createHttpError.NotFound(AuthMessage.NotFound)
         return user
     }
-    siginToken(payload){
-        return jwt.sign(payload, process.env.JWT_SECRET_KEY, {expiresIn: "1y"})
-    }
+    async checkRefreshToken(refreshToken) {
+        if (!refreshToken)
+          throw new createHttpError.Unauthorized(AuthorizationMessage.Login);
+        const data = jwt.verify(refreshToken, process.env.JWT_SECRET_KEY);
+        if (typeof data === "object" && "id" in data) {
+          const user = await UserModel.findById(data.id).lean();
+          if (!user)
+            throw new createHttpError.Unauthorized(
+              AuthorizationMessage.NotFoundAccount
+            );
+          const accessToken = this.signToken({ mobile: user.mobile, id: user._id });
+          const refreshToken = this.signToken({
+            mobile: user.mobile,
+            id: user._id,
+          });
+          await UserModel.updateOne(
+            { _id: user._id },
+            {
+              $set: {
+                accessToken,
+                refreshToken,
+              },
+            }
+          );
+          return {
+            accessToken,
+            refreshToken,
+          };
+        }
+        throw new createHttpError.Unauthorized();
+      }
+
+    signToken(
+        payload,
+        expiresIn = new Date().getTime() + 1000 * 60 * 60 * 24 * 30 * 12
+      ) {
+        return jwt.sign(payload, process.env.JWT_SECRET_KEY, { expiresIn });
+      }
 }
 module.exports = new AuthService()
