@@ -1,0 +1,80 @@
+.form {
+    max-width: 500px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    margin-top: 100px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 40px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+}
+
+.form h1 {
+    text-align: center;
+    font-size: 2rem;
+    color: #a62626;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.form h1::after {
+    content: "";
+    display: block;
+    width: 200px;
+    height: 3px;
+    background-color: #a62626;
+    margin: 5px auto 0;
+}
+
+.form p {
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333333;
+}
+.form label {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 10px;
+    color: #333333;
+}
+
+.form input {
+    width: 100%;
+    margin: 10px 0 20px;
+    padding: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.form input:focus {
+    border-color: #a62626;
+    outline: none;
+}
+.form select{
+    margin-bottom: 40px;
+    margin-right: 20px;
+}
+
+
+.form button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background-color: #a62626;
+    color: #ffffff;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+.form button:hover {
+    background-color: #8f1f1f;
+}

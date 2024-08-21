@@ -32,7 +32,7 @@ async checkOTP(req, res, next) {
         
         // ذخیره accessToken در کوکی
         res.cookie(CookieNames.AccessToken, accessToken, {
-            httpOnly: true,
+            httpOnly: false,
             secure: process.env.Node_Env === NodeEnv.Production,
             sameSite: 'strict',
             maxAge: 24 * 60 * 60 * 1000 // یک روز
@@ -40,7 +40,7 @@ async checkOTP(req, res, next) {
         
         // ذخیره refreshToken در کوکی
         res.cookie(CookieNames.RefreshToken, refreshToken, {
-            httpOnly: true,
+            httpOnly: false,
             secure: process.env.Node_Env === NodeEnv.Production,
             sameSite: 'strict',
             maxAge: 30 * 24 * 60 * 60 * 1000 // سی روز

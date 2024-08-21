@@ -1,5 +1,5 @@
 const CookieNames = Object.freeze({
-    AccessToken : "access_token",
-    RefreshToken : "refresh_token"
+    AccessToken : "accessToken",
+    RefreshToken : "refreshToken"
 })
 module.exports = CookieNames

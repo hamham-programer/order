@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getUserById } from '../../services/userService';
-
-
+import styles from "./UserDetailsPage.module.css"
 const UserDetailsPage = () => {
     const { userId } = useParams();
     const [user, setUser] = useState(null);
@@ -25,14 +24,14 @@ const UserDetailsPage = () => {
     if (error) return <p>{error}</p>;
 
     return (
-        <div>
-            <h1>User Details</h1>
+        <div className={styles.form}>
+            <h1>جزئیات کاربر</h1>
             {user ? (
                 <div>
-                    <p><strong>Full Name:</strong> {user.fullName}</p>
-                    <p><strong>Personnel Code:</strong> {user.personnelCode}</p>
-                    <p><strong>Work Location:</strong> {user.workLocation}</p>
-                    <p><strong>Role:</strong> {user.role}</p>
+                    <p><strong>نام و نام خانوادگی</strong> {user.fullName}</p>
+                    <p><strong>کد پرسنلی</strong> {user.personnelCode}</p>
+                    <p><strong>محل فعالیت</strong> {user.workLocation}</p>
+                    <p><strong>نقش </strong> {user.role}</p>
                 </div>
             ) : (
                 <p>Loading...</p>

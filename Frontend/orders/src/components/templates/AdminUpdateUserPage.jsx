@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import {  useNavigate, useParams } from 'react-router-dom';
 import { updateUserByAdmin } from '../../services/userService';
-
-
+import styles from "./AdminUpdateUserPage.module.css"
+import toast, { Toaster } from 'react-hot-toast';
 const AdminUpdateUserPage = () => {
     const { userId } = useParams();
     const [fullName, setFullName] = useState('');
@@ -10,7 +10,8 @@ const AdminUpdateUserPage = () => {
     const [workLocation, setWorkLocation] = useState('');
     const [role, setRole] = useState('');
     const [error, setError] = useState('');
-
+    
+    const navigate = useNavigate();
     useEffect(() => {
         // Fetch user data by userId if needed
     }, [userId]);
@@ -19,7 +20,8 @@ const AdminUpdateUserPage = () => {
         e.preventDefault();
         const { response, error } = await updateUserByAdmin(userId, { fullName, personnelCode, workLocation, role });
         if (response) {
-            alert('User updated successfully');
+            toast.success("بروزرسانی با موفقیت انجام شد")
+            navigate("/admin/all-users")
         }
         if (error) {
             setError('Failed to update user');
@@ -27,51 +29,50 @@ const AdminUpdateUserPage = () => {
     };
 
     return (
-        <div>
-            <h1>Update User</h1>
+        <div className={styles.form}>
+            <h1>بروزرسانی کاربر</h1>
             <form onSubmit={handleSubmit}>
                 <div>
-                    <label htmlFor="fullName">Full Name:</label>
+                    <label htmlFor="fullName">نام ونام خانوادگی</label>
                     <input
                         id="fullName"
                         type="text"
                         value={fullName}
                         onChange={(e) => setFullName(e.target.value)}
-                        placeholder="Full Name"
+                        placeholder="نام و نام خانوادگی"
                         required
                     />
                 </div>
                 <div>
-                    <label htmlFor="personnelCode">Personnel Code:</label>
+                    <label htmlFor="personnelCode">کد پرسنلی</label>
                     <input
-                        id="personnelCode"
+                        id="کد پرسنلی"
                         type="text"
                         value={personnelCode}
                         onChange={(e) => setPersonnelCode(e.target.value)}
-                        placeholder="Personnel Code"
+                        placeholder="کد پرسنلی"
                     />
                 </div>
                 <div>
-                    <label htmlFor="workLocation">Work Location:</label>
+                    <label htmlFor="workLocation">محل فعالیت</label>
                     <input
                         id="workLocation"
                         type="text"
                         value={workLocation}
                         onChange={(e) => setWorkLocation(e.target.value)}
-                        placeholder="Work Location"
+                        placeholder="محل فعالیت"
                     />
                 </div>
                 <div>
-                    <label htmlFor="role">Role:</label>
-                    <input
-                        id="role"
-                        type="text"
-                        value={role}
-                        onChange={(e) => setRole(e.target.value)}
-                        placeholder="Role"
-                    />
+                    <label htmlFor="role">نقش کاربر</label>
+                    <select id="role"  value={role} onChange={(e) => setRole(e.target.value)}>
+                        <option value="">نقش کاربر:</option>
+                        <option value="USER">کاربر عادی</option>
+                        <option value="ADMIN">ادمین</option>
+                    </select>
                 </div>
-                <button type="submit">Update User</button>
+                <button type="submit">بروزرسانی کاربر</button>
+                
                 {error && <p>{error}</p>}
             </form>
         </div>

@@ -8,6 +8,7 @@ const sendOtp = async(mobile) => {
         return {response}
         
     } catch (error) {
+        
         return {error}
         
     }

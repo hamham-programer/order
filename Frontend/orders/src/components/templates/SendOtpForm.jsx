@@ -1,5 +1,6 @@
 import toast from "react-hot-toast"
 import { sendOtp } from "../../services/auth"
+import styles from "./SendOtp.module.css"
 
 function SendOtpForm({mobile, setMobile,setStep}) {
   const submithandler = async(event) =>{
@@ -13,8 +14,14 @@ function SendOtpForm({mobile, setMobile,setStep}) {
     if(error) toast.error(error.response.data.message)   
     console.log(response, error);    
   }
+/*   if (error) {
+    console.error("ارسال OTP با مشکل مواجه شد:", error);}
+    // خطا را به صورت مناسب مدیریت کنید، مثلا یک پیام کاربرپسند نمایش دهید
+    return;
+} */
   return (
-    <form onSubmit={submithandler}>
+    <form onSubmit={submithandler} className={styles.form}>
+      <h1>مدلل</h1>
       <p>ورود به حساب کاربری</p>
       <span>همکار گرامی برای ورود به سامانه سفارش لطفا شماره موبایل ثبت شده در شرکت را وارد کنید. کد تایید به این شماره پیامک خواهد شد </span>
 

@@ -50,13 +50,31 @@ class UserController {
             return res.status(500).json({ message: "Internal server error" });
         }
     }
+    async  checkProfile(req, res, next) {
+        try {
+            const user = await UserModel.findById(req.user._id);
+            if (!user) {
+                return res.status(404).json({ message: UserMessage.UserNotFound });
+            }
+            // اگر پروفایل تکمیل شده باشد
+            if (user.isProfileCompleted) {
+                return res.status(200).json({ isProfileCompleted: true });
+            }
+            return res.status(200).json({ isProfileCompleted: false });
+        } catch (error) {
+            next(error);
+        }
+    }
+    
 
     async getAllUser(req, res, next) {
         try {
             const users = await UserModel.find({});
+            console.log(users);
             if (!users || users.length === 0) {
                 return res.status(404).json({ message: UserMessage.NotFoundUser });
             }
+            
             return res.status(200).json({ 
                 message: UserMessage.receive, 
                 users 

@@ -4,7 +4,7 @@ import api from "../configs/api";
 const getAllUsers = async () => {
     try {
         const response = await api.get("user/users", {
-            withCredentials: true // اضافه کردن credentials به درخواست
+            withCredentials: true 
         });
         return { response };
     } catch (error) {
@@ -49,4 +49,17 @@ const getUserById = async (userId) => {
     }
 };
 
-export { getAllUsers, updateProfile, updateUserByAdmin, getUserById };
+ const checkProfile = async () => {
+    try {
+        const response = await api.get('user/check-profile', {
+            withCredentials: true
+        });
+        return { response: response.data};
+    } catch (error) {
+        console.error("Failed to check profile", error);
+        return { error };
+    }
+};
+
+
+export { getAllUsers, updateProfile, updateUserByAdmin, getUserById, checkProfile};

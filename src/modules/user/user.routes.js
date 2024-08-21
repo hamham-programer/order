@@ -9,6 +9,9 @@ router.get("/whoami", userController.whoami);
 // مسیر برای به‌روزرسانی پروفایل کاربر فعلی (فقط یک بار مجاز است)
 router.put("/profile", userController.updateProfile);
 
+// مسیر برای چک کردن وضعیت کاربر)
+router.get("/check-profile", userController.checkProfile);
+
 // مسیر برای به‌روزرسانی پروفایل هر کاربر توسط ادمین
 router.put("/profile/:userId", verifyAdmin, userController.updateUserProfileByAdmin);
 
