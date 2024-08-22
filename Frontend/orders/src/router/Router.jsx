@@ -6,16 +6,18 @@ import AdminPage from '../pages/AdminPage';
 import PageNotFound from '../pages/404';
 import AdminUpdateUserPage from '../components/templates/AdminUpdateUserPage';
 import AllUsersPage from '../components/templates/AllUsersPage'; 
-import UserDetailsPage from '../components/templates/UserDetailsPage ';
-import UserProfilePage from '../components/templates/UserProfilePage ';
+import UserDetailsPage from '../components/templates/UserDetailsPage';
+import UserProfilePage from '../components/templates/UserProfilePage';
 import { useQuery } from '@tanstack/react-query';
 import { getProfile } from '../services/user';
 import Loader from '../components/modules/Loader';
+import { useUser } from './UserContext';
 function Router() {
   const {data, isLoading, error} = useQuery(["profile"], getProfile)
   console.log({data, isLoading, error});
   if(isLoading === true) return <Loader />
-  
+  const { userRole } = useUser();
+
   return (
     <Routes>
     <Route path="/" element={<HomePage />} />
