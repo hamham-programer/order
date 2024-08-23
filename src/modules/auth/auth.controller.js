@@ -74,6 +74,9 @@ async checkOTP(req, res, next) {
     }
     async logOut(req, res, next) {
         try {
+            return res.clearCookie(CookieNames.AccessToken).status(200).json({
+                message: AuthMessage.LogoutSuccessfuly
+            })
             
         } catch (error) {
             next(error)
