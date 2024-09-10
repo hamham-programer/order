@@ -1,0 +1,36 @@
+.list{
+    margin: 50px 0 70px;
+}
+.list li{
+    display:  flex;
+    margin: 20px 0;
+    padding: 15px;
+    border: 2px solid #eaeaea;
+    border-radius: 5px;
+}
+.list img{
+    margin-left: 10px;
+}
+.list span{
+    margin-right:  10px;
+    font-size: 0.9rem;
+    width: 120px;
+}
+.list p{
+    width: 100%;
+    text-align: left;
+    color: #a62626;
+}
+.deleteButton {
+    background-color: #a62626;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: auto;
+}
+
+.deleteButton:hover {
+    background-color: #e60000;
+}

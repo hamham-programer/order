@@ -9,6 +9,7 @@ body {
   max-width: 1400px;
   min-height: 100vh;
   padding: 10px;
+  background-image: linear-gradient(to bottom, #051937, #002466, #002b96, #272bc3, #6612eb);
 }
 
 * {

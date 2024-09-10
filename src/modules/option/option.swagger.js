@@ -88,9 +88,16 @@
  * @swagger
  * /option/{id}:
  *  put:
- *      summary: updated option by id
+ *      summary: Update an option by id
  *      tags:
  *          -   Option
+ *      parameters:
+ *          -   in: path
+ *              name: id
+ *              required: true
+ *              schema:
+ *                  type: string
+ *              description: The ID of the option to update
  *      requestBody:
  *          content:
  *              application/x-www-form-urlencoded:
@@ -101,8 +108,11 @@
  *                      $ref: '#/components/schemas/UpdateOption'
  *      responses:
  *          201: 
- *              description: created
+ *              description: Successfully updated
+ *          404:
+ *              description: Option not found
  */
+
 /**
  * @swagger
  * /option/by-category/{categoryId}:

@@ -3,6 +3,7 @@ import { getCookie, getNewTokens, setCookie } from "../utils/cookie";
 
 const api = axios.create({
     baseURL: import.meta.env.VITE_BASE_URL,
+    withCredentials: true,
     headers: {
         "Content-Type": "application/json"
     }

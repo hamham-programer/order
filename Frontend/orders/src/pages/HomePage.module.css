@@ -1,0 +1,83 @@
+.homePage {
+  text-align: center;
+  margin-top: 140px;
+  position: relative; /* برای استفاده از position: absolute در تصاویر */
+}
+
+.heading {
+  font-size: 3rem; 
+  font-weight: bold; 
+  color: #ffffff; 
+  margin-bottom: 10px; 
+}
+
+.subheading {
+  font-size: 1.25rem; 
+  color: gray; 
+}
+
+.buttonContainer {
+  position: relative;
+  display: flex;
+  gap: 12px;
+  justify-content: center; 
+  margin-top: 100px;
+}
+
+.buttonLink {
+  text-decoration: none;
+}
+
+.button {
+  font-weight: 800; 
+  background-image: linear-gradient(to right, #e44d26, #ffca28); /* گرادیانت نارنجی */
+  transition: background-image 0.3s ease, color 0.3s ease, border 0.3s ease;
+  color: #fff; 
+  border: none;
+  padding: 15px 30px; 
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 26px; 
+  line-height: 1.75rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.button-blue {
+  background-image: linear-gradient(to right, #007aff, #00c6ff); /* گرادیانت آبی */
+}
+
+.button:hover {
+  border: 5px solid #a03737; /* رنگ حاشیه هاور */
+  opacity: 0.9; 
+}
+
+.leftImage, .rightImage {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 300px; 
+  height: auto; 
+  object-fit: cover;
+  animation: slideIn 3s ease-in-out infinite alternate; /* انیمیشن آرام */
+}
+
+.leftImage {
+  left: 0;
+}
+
+.rightImage {
+  right: 0;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-10%) translateX(-10px); /* شروع انیمیشن */
+  }
+  to {
+    transform: translateY(-20%) translateX(5px); /* پایان انیمیشن */
+  }
+}

@@ -4,12 +4,13 @@ import { getAllUsers } from '../../services/userService';
 import styles from "./AllUsersPage.module.css";
 
 const AllUsersPage = () => {
+    
     const [users, setUsers] = useState([]);
     const [filteredUsers, setFilteredUsers] = useState([]);
     const [error, setError] = useState(null);
     const [searchTerm, setSearchTerm] = useState('');
     const [workLocationCounts, setWorkLocationCounts] = useState({});
-
+    
     useEffect(() => {
         const fetchUsers = async () => {
             try {
@@ -31,14 +32,19 @@ const AllUsersPage = () => {
     }, []);
 
     useEffect(() => {
-        const results = users.filter(user =>
-            user.fullName.includes(searchTerm) ||
-            user.personnelCode.includes(searchTerm) ||
-            user.workLocation.includes(searchTerm)
-        );
+        const results = users.filter(user => {
+            const fullName = user.fullName || '';
+            const personnelCode = user.personnelCode || '';
+            const organization = user.organization || '';
+            const workLocation = user.workLocation || '';
+            
+            return fullName.includes(searchTerm) ||
+                   personnelCode.includes(searchTerm) ||
+                   organization.includes(searchTerm)  ||
+                   workLocation.includes(searchTerm);
+        });
         setFilteredUsers(results);
     }, [searchTerm, users]);
-
    
     return (
         <div className={styles.form}>
@@ -57,7 +63,8 @@ const AllUsersPage = () => {
                         <th>نام و نام خانوادگی</th>
                         <th>موبایل</th>
                         <th>کد پرسنلی</th>
-                        <th>محل کار</th>
+                        <th>نام شرکت</th>
+                        <th>محل فعالیت</th>
                         <th>عملیات</th> 
                     </tr>
                 </thead>
@@ -67,6 +74,7 @@ const AllUsersPage = () => {
                             <td>{user.fullName}</td>
                             <td>{user.mobile}</td>
                             <td>{user.personnelCode}</td>
+                            <td>{user.organization}</td>
                             <td>{user.workLocation}</td>
                             <td>
                                 <Link to={`/user/${user._id}`} className={styles.detailLink}>جزئیات</Link> 

@@ -3,7 +3,7 @@ import api from "../configs/api"
 const sendOtp = async(mobile) => {
     try {
         const response = await api.post("auth/send-otp", {mobile:mobile},{
-            withCredentials: true // اضافه کردن credentials به درخواست
+            withCredentials: true 
         }) 
         return {response}
         
@@ -16,7 +16,7 @@ const sendOtp = async(mobile) => {
 const chechOtp = async(mobile, code)=>{
     try {
         const response = await api.post("auth/check-otp", {mobile, code},{
-            withCredentials: true // اضافه کردن credentials به درخواست
+            withCredentials: true 
         })
         return {response}
         

@@ -1,7 +1,72 @@
 .footer {
+    background-color: white;
+    color: #333; /* رنگ متن به خاکستری تیره برای خوانایی بهتر */
+    padding: 20px;
+    border-top: 1px solid gray /* خط جداکننده در بالای فوتر */
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .footerColumns {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+    margin-bottom: 20px;
+  }
+  
+  .footerAbout, .footerLinks {
+    width: 30%;
+  }
+  
+  .footerAbout h3, .footerLinks h3 {
+    color: gray;
+  }
+  
+  .footerAbout p {
+    font-size: 20px;
+  }
+  
+  .footerLinks ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .footerLinks li {
+    margin: 5px 0;
+  }
+  
+  .footerLinks a {
+    text-decoration: none;
+    color: #a03737;; /* رنگ لینک‌های مفید */
+  }
+  
+  .footerLinks a:hover {
+    text-decoration: underline;
+  }
+  
+  .footerSocial {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .socialIcon {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #007bff; /* رنگ آیکون‌های شبکه‌های اجتماعی */
+  }
+  
+  .socialIcon:hover {
+    text-decoration: underline;
+  }
+  
+  .footerBottom {
+    margin-top: 20px;
     text-align: center;
-    margin-top: 100px;
-    padding-top: 10px;
-    border-top: 2px solid rgb(234, 234, 234);
-
-}
+    font-size: 14px;
+  }
+  

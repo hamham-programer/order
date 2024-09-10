@@ -14,8 +14,9 @@ const UserSchema = new Schema({
     refreshToken: { type: String },
     personnelCode: { type: String }, 
     workLocation: { type: String },  
+    organization: {type: String},
     role: { type: String, default: "ADMIN" },
-    isProfileCompleted: { type: Boolean, default: false },  // فیلد جدید برای بررسی تکمیل بودن پروفایل
+    isProfileCompleted: { type: Boolean, default: false },  // فیلد  برای بررسی تکمیل بودن پروفایل
 }, { timestamps: true });
 
 const UserModel = model("user", UserSchema);

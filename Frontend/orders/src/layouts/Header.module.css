@@ -106,3 +106,22 @@
 .button:hover {
     background-color: #7a1b1b;
 }
+
+.cartIcon {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+    color: gray;
+    text-decoration: none;
+}
+
+.cartIcon i {
+    font-size: 24px;
+    color: gray;
+    transition: color 0.3s ease;
+}
+
+.cartIcon:hover i {
+    color: black;
+}

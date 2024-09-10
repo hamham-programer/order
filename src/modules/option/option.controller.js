@@ -39,9 +39,9 @@ class OptionController{
     }
     async findByCategoryId(req, res, next){
         try {
-            const {categoyId} = req.body
-            const options = await this.#service.findByCategoryId(categoyId)
-            return res,json(options)      
+            const {categoryId} = req.params
+            const options = await this.#service.findByCategoryId(categoryId)
+            return res.json(options)      
             
         } catch (error) {
             next(error)            
@@ -59,20 +59,19 @@ class OptionController{
         }
 
     }
-    async removeById(req, res, next){
+  
+    async removeById(req, res, next) {
         try {
-            const {id} = req.params
-            await this.#service.removeById(id)
-            return res.json({
+            const { id } = req.params;
+            await this.#service.removeById(id);
+            return res.status(200).json({
                 message: OptionMessage.Deleted
-            })
-            
-            
+            });
         } catch (error) {
-            next(error)            
+            next(error);
         }
-
     }
+    
     async findByCategorySlug(req, res, next){
         try {
             const {slug} = req.params

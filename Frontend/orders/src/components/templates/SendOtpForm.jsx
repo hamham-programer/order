@@ -5,13 +5,17 @@ import styles from "./SendOtp.module.css"
 function SendOtpForm({mobile, setMobile,setStep}) {
   const submithandler = async(event) =>{
     event.preventDefault()
-    if(mobile.length !== 11) return
+    if(mobile.length !== 11){
+      toast.error("شماره موبایل باید ۱۱ رقم باشد.");
+      return
+    }
+      
     const {response, error} = await sendOtp(mobile)
-    if(response) {
+    if(response && response.data) {
       toast.success(response.data.message),
       setStep(2)
     }
-    if(error) toast.error(error.response.data.message)   
+    if(error&& error.response && error.response.data) toast.error(error.response.data.message)   
     console.log(response, error);    
   }
 /*   if (error) {

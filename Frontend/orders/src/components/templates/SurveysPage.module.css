@@ -1,0 +1,45 @@
+.container {
+    padding: 20px;
+    background-color: #f9f9f9;
+    min-height: 100vh;
+  }
+  
+  .title {
+    text-align: center;
+    color: #333;
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  .surveyList {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .surveyItem {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    padding: 15px;
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .surveyItem:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .surveyTitle {
+    font-size: 1.5rem;
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .surveyTitle:hover {
+    text-decoration: underline;
+  }
+  
+  .surveyDescription {
+    color: #666;
+  }
+  

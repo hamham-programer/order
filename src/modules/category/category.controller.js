@@ -16,7 +16,7 @@ class CategoryController{
             return res.status(HttpCodes.CREATED).json({
                 message:CategoryMessage.CREATED
             })    
-        } catch (error) {
+        } catch (error) {           
             next(error)
         }
     }
@@ -32,10 +32,11 @@ class CategoryController{
         try {
             const {id} = req.params
             await this.#service.remove(id)
-            return res.json({
+            return res.status(HttpCodes.OK).json({
                 message: CategoryController.Deleted
             })
         } catch (error) {
+            
             next(error)            
         }
     }

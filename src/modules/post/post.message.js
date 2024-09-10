@@ -1,10 +1,10 @@
 const PostMessage = Object.freeze({
-    CREATED: "آگهی با موفقیت ایجاد شد",
-    NotFound: "آگهی مورد نظر وجود ندارد",
-    AlreadExist: "آگهی موردنظر تکراری می باشد",
+    Created: "آگهی با موفقیت ایجاد شد",
+    NotFound: "آگهی یافت نشد",
+    AlreadyExist: "آگهی تکراری میباشد",
     Deleted: "آگهی با موفقیت حذف شد",
-    RequestNotValid: "درخواست شما صحیح نمی باشد"
-})
+    RequestNotValid: "درخواست شما صحیح نمیباشد",
+});
 module.exports = {
     PostMessage
-}
+};

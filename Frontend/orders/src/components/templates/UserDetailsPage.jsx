@@ -31,6 +31,7 @@ const UserDetailsPage = () => {
                     <p><strong>نام و نام خانوادگی</strong> {user.fullName}</p>
                     <p><strong>کد پرسنلی</strong> {user.personnelCode}</p>
                     <p><strong>محل فعالیت</strong> {user.workLocation}</p>
+                    <p><strong>شرکت</strong> {user.organization}</p>
                     <p><strong>نقش </strong> {user.role}</p>
                 </div>
             ) : (

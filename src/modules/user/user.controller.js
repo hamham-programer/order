@@ -37,10 +37,11 @@ class UserController {
                 return res.status(403).json({ message: UserMessage.NoAccess });
             }
 
-            const { fullName, personnelCode, workLocation } = req.body;
+            const { fullName, personnelCode, workLocation, organization } = req.body;
             user.fullName = fullName;
             user.personnelCode = personnelCode;
             user.workLocation = workLocation;
+            user.organization = organization
             user.isProfileCompleted = true; // پس از اولین به‌روزرسانی، پروفایل را تکمیل‌شده در نظر می‌گیریم
 
             await user.save();
@@ -70,7 +71,6 @@ class UserController {
     async getAllUser(req, res, next) {
         try {
             const users = await UserModel.find({});
-            console.log(users);
             if (!users || users.length === 0) {
                 return res.status(404).json({ message: UserMessage.NotFoundUser });
             }
@@ -103,7 +103,7 @@ class UserController {
     async updateUserProfileByAdmin(req, res, next) {
         try {
             const { id } = req.params;
-            const { fullName, personnelCode, workLocation, role } = req.body;
+            const { fullName, personnelCode, workLocation,organization, role } = req.body;
             const user = await UserModel.findById(id);
             if (!user) {
                 throw new createHttpError.NotFound(UserMessage.NotFoundUserId);
@@ -111,6 +111,7 @@ class UserController {
             user.fullName = fullName;
             user.personnelCode = personnelCode;
             user.workLocation = workLocation;
+            user.organization = organization;
             user.role = role;
             await user.save();
             return res.status(200).json({
