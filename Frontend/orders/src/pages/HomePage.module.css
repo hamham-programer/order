@@ -22,6 +22,7 @@
   gap: 12px;
   justify-content: center; 
   margin-top: 100px;
+  margin-bottom: 170px;
 }
 
 .buttonLink {
@@ -31,7 +32,6 @@
 .button {
   font-weight: 800; 
   background-image: linear-gradient(to right, #e44d26, #ffca28); /* گرادیانت نارنجی */
-  transition: background-image 0.3s ease, color 0.3s ease, border 0.3s ease;
   color: #fff; 
   border: none;
   padding: 15px 30px; 
@@ -80,4 +80,122 @@
   to {
     transform: translateY(-20%) translateX(5px); /* پایان انیمیشن */
   }
+}
+
+.swiper {
+  width: 100%;
+  max-width: fit-content;
+  margin: 110px auto 20px;
+}
+
+.swiper img {
+  width: 100px;
+  height: 100px; 
+  max-width: 100px;
+  max-height: 100px;
+  object-fit: cover; 
+  border-radius: 50%;
+  border: 3px solid #fff; 
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  margin: 0 auto;
+  display: block;
+}
+
+.contactSection {
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  margin-top: 100px;
+  margin-bottom: 100px;
+  padding:50px
+}
+
+.contactTitle {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.socialLinks {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+}
+
+.socialIconInstagram,
+.socialIconLinkedin,
+.socialIconWhatsapp,
+.socialIconTelegram,
+.socialIconComment,
+.socialIconEmail {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 2px 40x rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, color 0.3s;
+}
+.socialIconInstagram{
+  background: #e4647c; 
+  color: #fff;
+}
+.socialIconLinkedin{
+  color: #fff;
+  background-color:#4487ac; 
+}
+.socialIconWhatsapp{
+  background: #58d686; 
+  color: #fff;
+}
+.socialIconTelegram{
+  background: #3198cc; 
+  color: #fff;
+}
+.socialIconComment{
+  background: #3faf43; 
+  color: #fff;
+}
+.socialIconEmail{
+  background: #f5aa33; 
+  color: #fff;
+}
+
+
+.socialIconInstagram:hover {
+  background: #e4405f; 
+  color: #fff;
+}
+
+.socialIconLinkedin:hover {
+  background: #0077b5; 
+  color: #fff;
+}
+
+.socialIconWhatsapp:hover {
+  background: #25d366; 
+  color: #fff;
+}
+
+.socialIconTelegram:hover {
+  background: #0088cc; 
+  color: #fff;
+}
+
+.socialIconComment:hover {
+  background: #01b107; 
+  color: #fff;
+}
+
+.socialIconEmail:hover {
+  background: #f39c12; 
+  color: #fff;
+}
+
+.socialLinks i {
+  font-size: 2.45rem;
+  color: inherit;
 }

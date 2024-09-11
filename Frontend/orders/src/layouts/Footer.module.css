@@ -1,8 +1,7 @@
 .footer {
-    background-color: white;
-    color: #333; /* رنگ متن به خاکستری تیره برای خوانایی بهتر */
+    color: #fff; 
     padding: 20px;
-    border-top: 1px solid gray /* خط جداکننده در بالای فوتر */
+    border-top: 1px solid gray 
   }
   
   .container {
@@ -20,20 +19,26 @@
   }
   
   .footerAbout, .footerLinks {
-    width: 30%;
+    width: 40%;
   }
   
   .footerAbout h3, .footerLinks h3 {
-    color: gray;
+    color: #fff;
+    margin-bottom: 10px;
   }
   
   .footerAbout p {
-    font-size: 20px;
+    font-size: 15px;
+    color: gray;
+  }
+  .footerLinks{
+    text-align: center;
   }
   
   .footerLinks ul {
     list-style-type: none;
     padding: 0;
+    text-align: center;
   }
   
   .footerLinks li {
@@ -42,31 +47,16 @@
   
   .footerLinks a {
     text-decoration: none;
-    color: #a03737;; /* رنگ لینک‌های مفید */
+    color: gray;
   }
   
   .footerLinks a:hover {
-    text-decoration: underline;
-  }
-  
-  .footerSocial {
-    display: flex;
-    justify-content: center;
-  }
-  
-  .socialIcon {
-    margin: 0 10px;
-    text-decoration: none;
-    color: #007bff; /* رنگ آیکون‌های شبکه‌های اجتماعی */
-  }
-  
-  .socialIcon:hover {
-    text-decoration: underline;
+    color: #f0f0f0;
   }
   
   .footerBottom {
     margin-top: 20px;
     text-align: center;
-    font-size: 14px;
+    font-size: 16px;
   }
   

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { useCart } from "../router/CartContext"; // اطمینان حاصل کنید که مسیر صحیح است
+import { useCart } from "../router/CartContext"; 
 import styles from "./Header.module.css";
 import { useUser } from "../router/UserContext";
 
@@ -21,16 +21,16 @@ function Header() {
 
   return (
     <header className={styles.header}>
-      <div>
-        <Link to="/">
-          <img src="../../public/modall.png" className={styles.logo} alt="Logo" />
-        </Link>
-        <span>
-          <img src="../../public/location.svg" alt="Location" />
-          <p>کرمانشاه</p>
-        </span>
+     <div className={styles.links}>
+        <a href="#">خانه</a>
+        <a href="#">خدمات</a>
+        <a href="#">نظرسنجی</a>
       </div>
 
+
+      <div className={styles.branding}>
+        <p>انتخاب | مدلل</p>
+      </div>
       <div>
         <div className={styles.profileContainer}>
           <div className={styles.profile} onClick={toggleDropdown}>

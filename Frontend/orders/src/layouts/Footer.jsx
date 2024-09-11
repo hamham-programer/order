@@ -5,30 +5,30 @@ function Footer() {
     <footer className={styles.footer}>
       <div className={styles.container}>
         <div className={styles.footerColumns}>
-          {/* ستون درباره ما */}
+         
           <div className={styles.footerAbout}>
-            <h3>درباره ما</h3>
+            <h3>درباره سامانه انتخاب</h3>
             <p>
-              هدف ما در صنعت هوشمند یکپارچه کردن سیستم ها جهت ارتقای توان پرسنل می باشد
+            سامانه انتخاب به عنوان یک پشتیبان در راستای یکپارچه‌سازی صنعت نرم‌افزاری گروه مدلل فعالیت می‌کند. هدف ما ارتقای توان نرم‌افزاری گروه است که در نهایت به ارتقای سطح کیفی و تخصصی پرسنل منجر خواهد شد. ما در تلاشیم تا با بهره‌برداری از بهترین فناوری‌ها و روش‌ها، به پیشرفت و رشد گروه مدلل کمک کنیم.
             </p>
           </div>
 
           {/* ستون لینک‌های مفید */}
           <div className={styles.footerLinks}>
-            <h3>لینک‌های مفید</h3>
+            <h3>بخش های سایت</h3>
             <ul>
               <li><a href="#">خدمات</a></li>
               <li><a href="#">نظرسنجی</a></li>
               <li><a href="#">تماس با ما</a></li>
             </ul>
-          </div>
+          </div> 
 
-        {/* شبکه‌های اجتماعی */}
-        <div className={styles.footerSocial}>
+
+       {/*  <div className={styles.footerSocial}>
           <a href="#" className={styles.socialIcon}>فیس‌بوک</a>
           <a href="#" className={styles.socialIcon}>اینستاگرام</a>
           <a href="#" className={styles.socialIcon}>لینکدین</a>
-        </div>
+        </div> */}
       </div>
         </div>
 
