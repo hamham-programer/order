@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import {  useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { updateUserByAdmin } from '../../services/userService';
-import styles from "./AdminUpdateUserPage.module.css"
-import toast, { Toaster } from 'react-hot-toast';
+import styles from "./AdminUpdateUserPage.module.css";
+import toast from 'react-hot-toast';
+
 const AdminUpdateUserPage = () => {
     const { userId } = useParams();
     const [fullName, setFullName] = useState('');
@@ -10,8 +11,9 @@ const AdminUpdateUserPage = () => {
     const [workLocation, setWorkLocation] = useState('');
     const [role, setRole] = useState('');
     const [error, setError] = useState('');
-    
+
     const navigate = useNavigate();
+    
     useEffect(() => {
         // Fetch user data by userId if needed
     }, [userId]);
@@ -20,8 +22,8 @@ const AdminUpdateUserPage = () => {
         e.preventDefault();
         const { response, error } = await updateUserByAdmin(userId, { fullName, personnelCode, workLocation, role });
         if (response) {
-            toast.success("بروزرسانی با موفقیت انجام شد")
-            navigate("/admin/all-users")
+            toast.success("بروزرسانی با موفقیت انجام شد");
+            navigate("/admin/all-users");
         }
         if (error) {
             setError('Failed to update user');
@@ -33,7 +35,7 @@ const AdminUpdateUserPage = () => {
             <h1>بروزرسانی کاربر</h1>
             <form onSubmit={handleSubmit}>
                 <div>
-                    <label htmlFor="fullName">نام ونام خانوادگی</label>
+                    <label htmlFor="fullName">نام و نام خانوادگی</label>
                     <input
                         id="fullName"
                         type="text"
@@ -46,7 +48,7 @@ const AdminUpdateUserPage = () => {
                 <div>
                     <label htmlFor="personnelCode">کد پرسنلی</label>
                     <input
-                        id="کد پرسنلی"
+                        id="personnelCode"
                         type="text"
                         value={personnelCode}
                         onChange={(e) => setPersonnelCode(e.target.value)}
@@ -65,15 +67,14 @@ const AdminUpdateUserPage = () => {
                 </div>
                 <div>
                     <label htmlFor="role">نقش کاربر</label>
-                    <select id="role"  value={role} onChange={(e) => setRole(e.target.value)}>
+                    <select id="role" value={role} onChange={(e) => setRole(e.target.value)}>
                         <option value="">نقش کاربر:</option>
                         <option value="USER">کاربر عادی</option>
                         <option value="ADMIN">ادمین</option>
                     </select>
                 </div>
                 <button type="submit">بروزرسانی کاربر</button>
-                
-                {error && <p>{error}</p>}
+                {error && <p className={styles.error}>{error}</p>}
             </form>
         </div>
     );

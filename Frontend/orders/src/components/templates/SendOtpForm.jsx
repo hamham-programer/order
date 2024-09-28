@@ -25,9 +25,9 @@ function SendOtpForm({mobile, setMobile,setStep}) {
 } */
   return (
     <form onSubmit={submithandler} className={styles.form}>
-      <h1>مدلل</h1>
+      <h1>انتخاب | مدلل</h1>
       <p>ورود به حساب کاربری</p>
-      <span>همکار گرامی برای ورود به سامانه سفارش لطفا شماره موبایل ثبت شده در شرکت را وارد کنید. کد تایید به این شماره پیامک خواهد شد </span>
+      <span>همکار گرامی برای ورود به سامانه انتخاب لطفا شماره موبایل ثبت شده در شرکت را وارد کنید. کد تایید به این شماره پیامک خواهد شد </span>
 
       <label htmlFor="input"> لطفا شماره موبایل خود را وارد کنید</label>
       <input type="text" name="input" id="input" placeholder="شماره موبایل" 

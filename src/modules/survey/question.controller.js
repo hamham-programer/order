@@ -99,6 +99,20 @@ class QuestionController {
             next(error);
         }
     }
+
+      // دریافت گزینه‌های سوال با ID مشخص
+    async getOptionsByQuestionId(req, res, next) {
+        try {
+            const { questionId } = req.params;
+            const question = await QuestionModel.findById(questionId).select('options');
+            console.log('Fetching options for question ID:', questionId);
+
+            if (!question) throw createHttpError.NotFound("Question not found");
+            res.status(200).json({ options: question.options });
+        } catch (error) {
+            next(error);
+        }
+    }
 }
 
 module.exports = new QuestionController();

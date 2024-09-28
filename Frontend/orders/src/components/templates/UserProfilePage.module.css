@@ -1,30 +1,32 @@
 .form {
-    max-width: 500px;
+    max-width: 600px;
     margin: auto;
+    margin-bottom: 60px;
     display: flex;
     flex-direction: column;
-    margin-top: 100px;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    padding: 40px;
+    margin-top: 80px;
+    border: 1px solid #051937;
+    border-radius: 15px;
+    padding: 30px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background-color: #ffffff;
+    background: rgb(0,39,255);
+    background: linear-gradient(90deg, rgb(4, 33, 196) 0%, rgba(3,22,31,0.989233193277311) 0%, rgb(4, 1, 61) 71%);
 }
 
 .form h1 {
     text-align: center;
-    font-size: 2rem;
-    color: #a62626;
-    margin-bottom: 10px;
+    font-size: 1.8rem;
+    color: rgb(232, 236, 241);
+    margin-bottom: 20px;
     position: relative;
 }
 
 .form h1::after {
     content: "";
     display: block;
-    width: 300px;
-    height: 3px;
-    background-color: #a62626;
+    width: 100%;
+    height: 2px;
+    background-color: #1187f3;
     margin: 5px auto 0;
 }
 
@@ -32,19 +34,23 @@
     font-size: 1.1rem;
     margin-bottom: 20px;
     text-align: center;
-    color: gray
+    color: rgb(232, 236, 241);
+}
+
+.form div {
+    margin-bottom: 20px; 
 }
 
 .form label {
     font-size: 1.1rem;
     font-weight: 300;
     margin-bottom: 10px;
-    color: #333333;
+    color: rgb(232, 236, 241);
+    display: block; /* نمایش بلوکی برای جلوگیری از تداخل با دیگر المان‌ها */
 }
 
-.form input {
+.form input, .form .MuiTextField-root {
     width: 100%;
-    margin: 10px 0 20px;
     padding: 10px;
     border: 1px solid #cccccc;
     border-radius: 5px;
@@ -52,8 +58,8 @@
     transition: border-color 0.3s;
 }
 
-.form input:focus {
-    border-color: #a62626;
+.form input:focus, .form .MuiTextField-root .MuiOutlinedInput-root.Mui-focused {
+    border-color: #1187f3;
     outline: none;
 }
 
@@ -61,7 +67,7 @@
     width: 100%;
     padding: 10px;
     border: none;
-    background-color: #a62626;
+    background-color: #1187f3;
     color: #ffffff;
     border-radius: 5px;
     cursor: pointer;
@@ -71,5 +77,26 @@
 }
 
 .form button:hover {
-    background-color: #8f1f1f;
+    background-color: #0a5ea3;
 }
+
+.autocomplete {
+    position: relative;
+}
+
+.autocomplete .MuiAutocomplete-popupIndicator {
+    position: absolute;
+    left: 10px; /* فاصله از سمت چپ */
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.9rem; /* اندازه کوچک‌تر */
+}
+
+.autocomplete .MuiAutocomplete-clearIndicator {
+    position: absolute;
+    left: 35px; /* فاصله از سمت چپ */
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.9rem; /* اندازه کوچک‌تر */
+}
+

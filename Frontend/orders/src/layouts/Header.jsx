@@ -22,9 +22,13 @@ function Header() {
   return (
     <header className={styles.header}>
      <div className={styles.links}>
-        <a href="#">خانه</a>
-        <a href="#">خدمات</a>
-        <a href="#">نظرسنجی</a>
+        <Link to="/">خانه</Link>
+        <Link to="/services">خدمات</Link>
+        <Link to="/surveys">نظرسنجی</Link>
+{/* 
+        <a href="/">خانه</a>
+        <a href="/">خدمات</a>
+        <a href="/">نظرسنجی</a> */}
       </div>
 
 

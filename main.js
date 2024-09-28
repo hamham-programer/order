@@ -28,7 +28,7 @@ async function main() {
     
     app.use('/upload', express.static('public/upload'));
 
-    SwaggerConfig(app)
+    SwaggerConfig(app) 
     app.use(mainRouter)
     AllExceptionHandler(app)
     NotFoundHandler(app)

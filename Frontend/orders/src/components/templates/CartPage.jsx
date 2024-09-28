@@ -11,8 +11,6 @@ function CartPage() {
       {cartItems.map((item) => (
         <div key={item._id} className={styles.cartItem}>
           <img src={item.options.imageUrl} alt={item.options.title} className={styles.image} /> 
-          
-          {/* فرض بر این است که آدرس تصویر محصول در item.options.imageUrl موجود است */}
           <div className={styles.itemDetails}>
             <p className={styles.title}>{item.options.title}</p>
             <p className={styles.quantity}>مقدار: {item.quantity}</p>

@@ -60,3 +60,37 @@
     font-size: 16px;
   }
   
+/* ریسپانسیو برای صفحه‌نمایش‌های کوچک‌تر */
+@media screen and (max-width: 768px) {
+  .footerColumns {
+      flex-direction: column; /* ستون‌ها به صورت عمودی قرار می‌گیرند */
+      align-items: center;
+  }
+
+  .footerAbout, .footerLinks {
+      width: 90%; /* عرض ستون‌ها کاهش می‌یابد */
+      margin-bottom: 20px; /* فاصله بین ستون‌ها در حالت عمودی */
+  }
+  .footerLinks{
+    display: none;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .footerAbout p {
+      font-size: 13px; /* کاهش سایز متن در سایزهای کوچکتر */
+  }
+
+  .footerLinks {
+      font-size: 14px; /* کاهش سایز متن لینک‌ها */
+  }
+
+  .footerLinks ul {
+      padding: 0;
+      text-align: center;
+  }
+
+  .footerBottom {
+      font-size: 14px; /* کاهش سایز فونت بخش پایین فوتر */
+  }
+}

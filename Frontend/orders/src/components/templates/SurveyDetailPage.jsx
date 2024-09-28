@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getSurveyById, submitResponse } from '../../services/admin';
+import { useUser } from '../../router/UserContext';
 import styles from './SurveyDetailPage.module.css'; // Import CSS module
 
 const SurveyDetailPage = () => {
   const { surveyId } = useParams();
   const navigate = useNavigate();
+  const { userId } = useUser();  // Get userId from context
   const [survey, setSurvey] = useState(null);
   const [responses, setResponses] = useState({});
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -49,6 +51,7 @@ const SurveyDetailPage = () => {
       // ارسال پاسخ‌ها به سرور به صورت JSON
       await submitResponse({
         surveyId,
+        user: userId,
         answers: JSON.stringify(formattedAnswers), // تبدیل به JSON
       });
       setSuccess(true);
@@ -121,12 +124,12 @@ const SurveyDetailPage = () => {
         </div>
         <div className={styles.buttons}>
           {currentQuestionIndex > 0 && (
-            <button type="button" className={styles.button} onClick={handlePrevious}>Previous</button>
+            <button type="button" className={styles.button} onClick={handlePrevious}>سوال قبلی</button>
           )}
           {currentQuestionIndex < survey.questions.length - 1 ? (
-            <button type="button" className={styles.button} onClick={handleNext}>Next</button>
+            <button type="button" className={styles.button} onClick={handleNext}>سوال بعدی</button>
           ) : (
-            <button type="submit" className={`${styles.button} ${styles.submitButton}`}>Submit Responses</button>
+            <button type="submit" className={`${styles.button} ${styles.submitButton}`}><i class="fas fa-check-circle"></i>  ثبت پاسخ ها</button>
           )}
         </div>
       </form>

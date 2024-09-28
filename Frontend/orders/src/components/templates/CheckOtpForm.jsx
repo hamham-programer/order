@@ -22,15 +22,16 @@ function CheckOtpForm({code, setCode, setStep, mobile}) {
   }
   return (
     <form onSubmit={submitHandler} className={styles.form}> 
-          <h1>مدلل</h1>
+          <h1>انتخاب | مدلل</h1>
       <p>تایید کد پیامک شده به تلفن  همراه </p>
       <span> کد پیامک شده به شماره موبایل "{mobile}" را وارد کنید</span>
 
       <label htmlFor="input">لطفا کد تایید را وارد کنید</label>
       <input type="text" name="input" id="input" placeholder="کد تایید" 
        value={code} onChange={e => setCode(e.target.value)}/>
-       <button type="submit">ورود به سامانه</button>
-       <button onClick={() => setStep(1)} className={styles.backButton}>تغییر شماره موبایل</button>
+       <button type="submit" className={styles.submitButton}>ورود به سامانه</button>
+       <button onClick={() => setStep(1)} className={styles.backButton}>&#8594; تغییر شماره موبایل </button>
+
     </form>
   )
 }

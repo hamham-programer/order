@@ -1,81 +1,154 @@
 .form {
-    max-width: 1300px;
-    margin: auto;
     padding: 20px;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    background-color: #ffffff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    min-height: 100vh;
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.form h1 {
+    font-weight: 600;
+    margin-bottom: 30px;
+    border-bottom: 3px solid #ffffff;
+    width: fit-content;
+    color: #f5f0f0;
+    font-size: 1.8rem;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .searchInput {
-    width: 100%;
-    text-align: center;
+    width: 60%;
     padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #e0e0e0;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-.form h1 {
-    font-size: 2rem;
-    color: #a62626;
-    text-align: center;
     margin-bottom: 20px;
-    position: relative;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease;
 }
 
-.form h1::after {
-    content: "";
-    display: block;
-    width: 230px;
-    height: 3px;
-    background-color: #a62626;
-    margin: 10px auto 0;
-}
-
-.table-container {
-    overflow-x: auto;
+.searchInput:focus {
+    border-color: #26a69a;
+    outline: none;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
+    color: #fff;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 th, td {
-    padding: 12px;
-    text-align: center;
-    border-bottom: 1px solid #e0e0e0;
+    padding: 12px 20px;
+    border-bottom: 1px solid #ddd;
 }
 
-th {
-    background-color: #f2f2f2;
-    font-weight: bold;
+thead {
+    background-color: #4f60bb;
+    color: #ffffff;
+    font-weight: 600;
 }
 
-td {
-    background-color: #ffffff;
+tbody tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
+tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.detailLink, .editLink {
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 8px;
+    transition: background 0.3s ease;
+    margin-left: 5px;
+}
 
 .detailLink {
-    color: #a62626;
-    text-decoration: none;
-    font-weight: bold;
-    margin-left: 10px;
+    background-color: #ec0808;
+    color: #ffffff;
+    
 }
+
 .editLink {
-    color: #3bf10d;
-    text-decoration: none;
-    font-weight: bold;
+    background-color: #26a69a;
+    color: #ffffff;
+
 }
 
 .detailLink:hover {
-    text-decoration: underline;
-}
-.editLink:hover {
-    text-decoration: underline;
+    background-color: #ff0000;
 }
 
+.editLink:hover {
+    background-color: #4db6ac;
+}
+/* تنظیمات ریسپانسیو */
+@media (max-width: 1024px) {
+    .searchInput {
+        width: 80%; /* افزایش عرض ورودی جستجو */
+        max-width: 300px; /* حداکثر عرض ورودی جستجو */
+    }
+
+    table {
+        font-size: 0.9rem; /* کاهش سایز متن جدول */
+        width: 100%; /* عرض جدول 100% */
+        overflow-x: auto; /* فعال کردن اسکرول افقی در صورت نیاز */
+    }
+
+    th, td {
+        padding: 10px; /* کاهش padding در سلول‌ها */
+        word-wrap: break-word; /* شکستن کلمات بلند */
+    }
+}
+
+@media (max-width: 768px) {
+    .searchInput {
+        width: 100%; /* عرض ورودی جستجو 100% */
+        max-width: none; /* حذف محدودیت حداکثر عرض */
+    }
+
+    table {
+        font-size: 0.85rem; /* کاهش سایز متن جدول */
+    }
+
+    th, td {
+        padding: 8px; /* کاهش padding در سلول‌ها */
+        word-wrap: break-word; /* شکستن کلمات بلند */
+    }
+
+    h1 {
+        font-size: 1.5rem; /* کاهش سایز عنوان */
+    }
+}
+
+@media (max-width: 480px) {
+    .form {
+        padding: 5px; /* کاهش padding در فرم */
+    }
+
+    h1 {
+        font-size: 1.2rem; /* کاهش سایز عنوان */
+    }
+
+    .searchInput {
+        padding: 6px; /* کاهش padding در ورودی جستجو */
+        font-size: 12px; /* کاهش سایز فونت */
+    }
+
+    table {
+        font-size: 0.8rem; /* کاهش سایز متن جدول */
+    }
+
+    th, td {
+        padding: 6px; /* کاهش padding در سلول‌ها */
+    }
+
+    .detailLink, .editLink {
+        padding: 5px 10px; /* کاهش padding دکمه‌ها */
+    }
+}

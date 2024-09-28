@@ -135,3 +135,63 @@
 .cartIcon:hover i {
     color: black;
 }
+@media screen and (max-width: 768px) {
+    .header {
+        margin-right: 10px;
+    }
+
+    .links {
+        gap: 10px; /* فاصله لینک‌ها کمتر می‌شود */
+        font-size: 0.9rem; /* کوچک‌تر کردن فونت برای مدیریت فضا */
+    }
+
+    .branding p {
+        font-size: 18px; /* کاهش سایز فونت برندینگ */
+        padding: 10px; /* کاهش فضای داخلی برندینگ */
+    }
+
+    .profileContainer {
+        margin-right: 10px;
+    }
+
+    .cartIcon {
+        margin-left: 10px; /* کاهش فاصله سبد خرید */
+    }
+    
+    .cartIcon i {
+        font-size: 20px;
+    }
+
+    .button {
+        display: none; /* مخفی کردن دکمه ثبت آگهی */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .header {
+        margin-right: 5px;
+    }
+
+    .links {
+        gap: 5px; /* کاهش فاصله بیشتر برای لینک‌ها */
+        font-size: 0.8rem; /* کوچک‌تر کردن بیشتر فونت لینک‌ها */
+    }
+
+    .branding p {
+        font-size: 16px; /* کاهش بیشتر سایز فونت برندینگ */
+        padding: 8px; /* کاهش بیشتر فضای داخلی برندینگ */
+    }
+
+    .profile img {
+        margin-right: 5px;
+        margin-left: 5px;
+    }
+
+    .cartIcon i {
+        font-size: 18px; /* کوچک‌تر کردن آیکون سبد خرید */
+    }
+
+    .button {
+        display: none; /* مخفی کردن دکمه ثبت آگهی */
+    }
+}

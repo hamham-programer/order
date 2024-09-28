@@ -77,7 +77,7 @@ const AllUsersPage = () => {
                             <td>{user.organization}</td>
                             <td>{user.workLocation}</td>
                             <td>
-                                <Link to={`/user/${user._id}`} className={styles.detailLink}>جزئیات</Link> 
+                                <Link to={`/user/${user._id}`} className={styles.detailLink}> جزئیات</Link> 
                                 <Link to={`/admin/update-user/${user._id}`} className={styles.editLink}>ویرایش</Link>
                             </td>
                         </tr>

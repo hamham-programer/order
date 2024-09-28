@@ -199,3 +199,183 @@
   font-size: 2.45rem;
   color: inherit;
 }
+/* ریسپانسیو برای صفحه‌نمایش‌های کوچک‌تر */
+@media screen and (max-width: 1044px) {
+  .heading {
+    font-size: 2rem; /* کاهش سایز عنوان */
+  }
+
+  .subheading {
+    font-size: 1rem; /* کاهش سایز زیرعنوان */
+  }
+
+  .button {
+    font-size: 18px; /* کاهش سایز دکمه‌ها */
+    padding: 8px 16px; /* کاهش padding دکمه‌ها */
+  }
+
+  .leftImage,
+  .rightImage {
+    width: 200px; /* کاهش عرض تصاویر */
+    height: auto;
+  }
+
+  .swiper {
+    margin: 20px auto; /* کاهش فاصله بالای swiper */
+  }
+
+  .contactSection {
+    padding: 30px; /* کاهش padding در بخش تماس */
+    text-align: center; /* وسط‌چین کردن متن تماس */
+  }
+
+  .contactTitle {
+    font-size: 1.2rem; /* کاهش سایز عنوان تماس */
+  }
+
+  .socialIconInstagram,
+  .socialIconLinkedin,
+  .socialIconWhatsapp,
+  .socialIconTelegram,
+  .socialIconComment,
+  .socialIconEmail {
+    width: 3rem; /* کاهش اندازه آیکون */
+    height: 3rem; /* کاهش اندازه آیکون */
+    box-shadow: none; /* حذف هاله */
+    margin: 4px; /* فاصله بین آیکون‌ها */
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 1024px) and (min-width: 768px) {
+  .heading {
+    font-size: 1.8rem;
+  }
+
+  .subheading {
+    font-size: 0.9rem;
+  }
+
+  .button {
+    font-size: 16px;
+    padding: 6px 12px;
+  }
+}
+
+@media screen and (max-width: 768px) and (min-width: 600px) {
+  .heading {
+    font-size: 1.5rem;
+  }
+
+  .subheading {
+    font-size: 0.85rem;
+  }
+
+  .button {
+    font-size: 16px;
+    padding: 6px 12px;
+  }
+
+  .contactTitle {
+    font-size: 1rem;
+  }
+
+  .leftImage,
+  .rightImage {
+    width: 150px;
+    height: auto;
+  }
+
+  .swiper img {
+    width: 70px;
+    height: 70px;
+  }
+}
+
+@media screen and (max-width: 600px) and (min-width: 480px) {
+  .heading {
+    font-size: 1.5rem;
+  }
+
+  .subheading {
+    font-size: 0.85rem;
+  }
+
+  .button {
+    font-size: 16px;
+    padding: 6px 12px;
+  }
+
+  .contactTitle {
+    font-size: 1rem;
+  }
+
+  .leftImage,
+  .rightImage {
+    width: 150px;
+    height: auto;
+  }
+
+  .swiper img {
+    width: 70px;
+    height: 70px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .heading {
+    font-size: 1.2rem;
+  }
+
+  .subheading {
+    font-size: 0.8rem;
+  }
+
+  .button {
+    font-size: 14px;
+    padding: 4px 8px;
+  }
+
+  .contactTitle {
+    font-size: 1rem;
+  }
+
+  .leftImage,
+  .rightImage {
+    width: 120px;
+    height: auto;
+  }
+
+  .swiper img {
+    width: 45px;
+    height: 45px;
+  }
+
+  .socialIconInstagram,
+  .socialIconLinkedin,
+  .socialIconWhatsapp,
+  .socialIconTelegram,
+  .socialIconComment,
+  .socialIconEmail {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin: 0;
+    box-shadow: none;
+  }
+
+  .contactSection {
+    padding-top: 5px;
+    text-align: center; /* وسط‌چین کردن در صفحه‌نمایش کوچک */
+  }
+
+  .swiper {
+    margin: 5px auto;
+  }
+}
+
+/* کاهش فاصله بین المان‌ها در همه سایزها */
+.after-button-section {
+  margin-top: 5px; /* کاهش فاصله بین دکمه‌ها */
+}

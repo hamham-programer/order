@@ -50,11 +50,14 @@ const SurveyPage = () => {
       <ul className={styles.surveyList}>
         {surveys.map((survey) => (
           <li className={styles.surveyItem} key={survey._id}>
-            <span className={styles.surveyTitle}>{survey.title} - {survey.description}</span>
-            <div>
-              <button className={styles.deleteButton} onClick={() => handleDeleteSurvey(survey._id)}>حذف نظرسنجی</button>
-              {/* لینک به صفحه سوالات برای این نظرسنجی */}
+            <div className={styles.surveyItemContent}>
+            <span className={styles.surveyTitle}>{survey.title}</span>
+             <span className={styles.surveyDescription}>{survey.description}</span>
+            </div>
+            <div className={styles.actions}>
               <Link className={styles.link} to={`/survey/${survey._id}/questions`}>ایجاد سوالات</Link>
+              <button className={styles.deleteButton} onClick={() => handleDeleteSurvey(survey._id)}>حذف نظرسنجی</button>
+              <Link className={styles.link} to={`/survey/${survey._id}/responses`}>مشاهده پاسخ‌ها</Link>
             </div>
           </li>
         ))}

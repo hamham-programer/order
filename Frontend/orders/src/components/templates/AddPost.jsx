@@ -61,37 +61,39 @@ function AddPost() {
 
   return (
     <>
-    <form onSubmit={submitHandler} onChange={changeHandler} className={styles.form}>
-      <h3>افزودن آگهی</h3>
-      <label htmlFor="title">عنوان</label>
-      <input type="text" name="title" id="title" value={form.title} />
+    <form onSubmit={submitHandler} className={styles.form}>
+  <h3>افزودن آگهی</h3>
 
-      <label htmlFor="content">توضیحات</label>
-      <textarea name="content" id="content" value={form.content} />
+  <label htmlFor="title">عنوان</label>
+  <input type="text" name="title" id="title" value={form.title} onChange={changeHandler} />
 
-      <label htmlFor="amount">قیمت</label>
-      <input type="number" name="amount" id="amount" value={form.amount} />
+  <label htmlFor="content">توضیحات</label>
+  <textarea name="content" id="content" value={form.content} onChange={changeHandler} />
 
-      <label htmlFor="discount">تخفیف</label>
-      <input type="number" name="discount" id="discount" value={form.discount} />
+  <label htmlFor="amount">قیمت</label>
+  <input type="number" name="amount" id="amount" value={form.amount} onChange={changeHandler} />
 
-      <label htmlFor="installments">تعداد اقساط</label>
-      <input type="number" name="installments" id="installments" value={form.installments} />
+  <label htmlFor="discount">تخفیف</label>
+  <input type="number" name="discount" id="discount" value={form.discount} onChange={changeHandler} />
 
-      <label htmlFor="category">دسته بندی</label>
-      <select name="category" id="category" value={form.category}>
-        {data?.data.map((category) => (
-          <option key={category._id} value={category._id}>
-            {category.name}
-          </option>
-        ))}
-      </select>
+  <label htmlFor="installments">تعداد اقساط</label>
+  <input type="number" name="installments" id="installments" value={form.installments} onChange={changeHandler} />
 
-      <label htmlFor="images">تصاویر</label>
-      <input type="file" name="images" id="images" onChange={changeHandler} />
+  <label htmlFor="category">دسته بندی</label>
+  <select name="category" id="category" value={form.category} onChange={changeHandler}>
+    {data?.data.map((category) => (
+      <option key={category._id} value={category._id}>
+        {category.name}
+      </option>
+    ))}
+  </select>
 
-      <button type="submit">ایجاد آگهی</button>
-    </form>
+  <label htmlFor="images">تصاویر</label>
+  <input type="file" name="images" id="images" onChange={changeHandler} />
+
+  <button type="submit">ایجاد آگهی</button>
+</form>
+
     <PostList />
     </>
   );

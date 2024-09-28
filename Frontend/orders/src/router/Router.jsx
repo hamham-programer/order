@@ -23,6 +23,9 @@ import SurveysPage from '../components/templates/SurveysPage';
 import ServicesPage from '../components/templates/ServicesPage';
 import CartPage from '../components/templates/CartPage';
 
+import SurveyAnalysisPage from '../components/templates/SurveyAnalysisPage';
+
+
 function Router() {
   const {data, isLoading, error} = useQuery(["profile"], getProfile)
   console.log({data, isLoading, error});
@@ -52,8 +55,9 @@ function Router() {
     <Route path="/profile" element={<UserProfilePage />} />
     <Route path="/user/:userId" element={data?.data?.role === "ADMIN" ? <UserDetailsPage /> : <Navigate to= "/" />} />
     <Route path= "/admin/survey-list" element={data?.data?.role === "ADMIN" ? <SurveyPage/> : <Navigate to = "/" />}/>
-    <Route path= "/survey/:surveyId/questions" element={data?.data?.role === "ADMIN" ? <QuestionPage/> : <Navigate to = "/" />}/>
-    <Route path= "/survey/:surveyId" element={data?.data?.role === "ADMIN" ? <SurveyDetailPage /> : <Navigate to = "/" />}/>
+    <Route path= "/survey/:surveyId/questions" element={data? <QuestionPage/> : <Navigate to = "/" />}/>
+    <Route path= "/survey/:surveyId/responses" element={data? <SurveyAnalysisPage /> : <Navigate to = "/" />}/>
+    <Route path= "/survey/:surveyId" element={data ? <SurveyDetailPage /> : <Navigate to = "/" />}/>
     <Route path="/post/:postId" element={<DetailsPost />} />
     <Route path="/cart" element={<CartPage />} />
     <Route path="*" element={<PageNotFound />} />

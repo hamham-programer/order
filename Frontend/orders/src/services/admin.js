@@ -14,9 +14,35 @@ const getQuestionsBySurvey = (surveyId) => api.get(`questions/surveys/${surveyId
 const getQuestionById = (id) => api.get(`questions/${id}`, { withCredentials: true });
 const updateQuestion = (id, data) => api.put(`questions/${id}`, data, { withCredentials: true });
 const deleteQuestion = (id) => api.delete(`questions/${id}`, { withCredentials: true });
+const getOptionsByQuestionId = (questionId) => 
+  
+  api.get(`questions/${questionId}/options`, { withCredentials: true });
 
 const submitResponse = (data) => api.post("response/submit", data, { withCredentials: true });
-const getResponses = (surveyId) => api.get(`response?surveyId=${surveyId}`, { withCredentials: true });
+/* const getResponses = (surveyId) => api.get(`response?surveyId=${surveyId}`, { withCredentials: true }); */
+
+const getResponses = async (surveyId) => {
+  try {
+    const response = await api.get(`response?surveyId=${surveyId}`, { withCredentials: true });
+    console.log(response.data)
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching responses:", error);
+    throw error;
+  }
+
+};
+const getSurveyAnalysis = async (surveyId) => {
+  try {
+    const response = await api.get(`response/analysis/${surveyId}`, { withCredentials: true });
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching survey analysis:", error);
+    throw error;
+  }
+};
+
+
 
 export {
   addCategory,
@@ -32,5 +58,8 @@ export {
   updateQuestion,
   deleteQuestion,
   submitResponse,
-  getResponses
+  getResponses,
+  getOptionsByQuestionId,
+  getSurveyAnalysis
+
 };

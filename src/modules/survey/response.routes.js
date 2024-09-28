@@ -6,6 +6,7 @@ const router = Router();
 
 router.post("/submit", Authorization, ResponseController.submitResponse);
 router.get("/", ResponseController.getResponses);
+router.get("/analysis/:surveyId", ResponseController.getSurveyAnalysis);
 
 module.exports = {
     ResponseRoutes: router

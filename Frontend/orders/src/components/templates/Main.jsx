@@ -45,10 +45,11 @@ function Main({ posts }) {
           </div>
           <div className={styles.info}>
             <p className={styles.title}>{post.options.title}</p>
-            <p>{post.options.content}</p>
-            <p>تخفیف: {post.options.discount}</p>
-            <p>تعداد اقساط: {post.options.installments}</p>
-            <div className={styles.amount}>{sp(post.amount)} تومان</div>
+            <p className={styles.discount}>تخفیف: {post.options.discount}</p>
+            {/* <p>{post.options.content}</p> */}
+            <p className={styles.installments}>تعداد اقساط: {post.options.installments}</p>
+            <div className={styles.amount}>قیمت:{sp(post.amount)} تومان</div>
+            <p className={styles.context}>همکاران برای مشاهده متن کامل آگهی وارد قسمت جزئیات شوید</p>
             <div className={styles.actions}>
               <button
                 onClick={() => handleDecreaseQuantity(post._id)}

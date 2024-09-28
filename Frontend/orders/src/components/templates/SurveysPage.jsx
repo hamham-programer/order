@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom'; // برای ایجاد لینک به صفحه جزئیات نظرسنجی
+import { Link } from 'react-router-dom'; 
 import { getAllSurveys } from '../../services/admin';
 import styles from './SurveysPage.module.css'; // Import CSS module
 

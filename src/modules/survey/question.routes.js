@@ -16,6 +16,9 @@ router.put("/:id", questionController.updateQuestion);
 
 // حذف سوال
 router.delete("/:id", questionController.deleteQuestion);
+// مسیر جدید برای دریافت گزینه‌های سوال
+router.get('/:questionId/options', questionController.getOptionsByQuestionId);
+
 
 
 module.exports = {

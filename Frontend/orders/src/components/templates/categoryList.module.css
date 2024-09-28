@@ -1,36 +1,99 @@
-.list{
-    margin: 50px 0 70px;
+.container {
+    padding: 30px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
-.list li{
-    display:  flex;
-    margin: 20px 0;
-    padding: 15px;
-    border: 2px solid #eaeaea;
-    border-radius: 5px;
+
+.header {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #4CAF50; /* رنگ سبز */
 }
-.list img{
-    margin-left: 10px;
-}
-.list span{
-    margin-right:  10px;
-    font-size: 0.9rem;
-    width: 120px;
-}
-.list p{
+
+.categoryList {
+    list-style-type: none;
+    padding: 0;
     width: 100%;
-    text-align: left;
-    color: #a62626;
+    max-width: 1200px;
 }
+
+.categoryItem {
+    display: flex;
+    align-items: center;
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.categoryItem:hover {
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+}
+
+.categoryItemContent {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.icon {
+    margin-left: 10px;
+    width: 50px;
+    height: 50px;
+}
+
+.categoryTitle {
+    font-size: 1.7rem;
+    color: #28a745;
+    font-weight: bold;
+}
+
+.categorySlug {
+    font-size: 1.1rem;
+    color: #666;
+    margin-right: 20px;
+}
+
+.categoryItemActions {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
 .deleteButton {
-    background-color: #a62626;
+    background-color: #e74c3c;
     color: white;
+    padding: 10px 15px;
     border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
-    margin-right: auto;
+    transition: background-color 0.3s ease;
 }
 
 .deleteButton:hover {
-    background-color: #e60000;
+    background-color: #c0392b;
+}
+
+.noCategoryText {
+    color: #a62626;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .categoryTitle {
+        font-size: 1.4rem;
+    }
+
+    .deleteButton {
+        font-size: 0.9rem;
+    }
 }

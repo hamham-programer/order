@@ -2,17 +2,20 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { checkProfile, updateProfile } from '../../services/userService';
 import Select from 'react-select'; 
-import Autocomplete from '@mui/material/Autocomplete'
+import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 import styles from "./UserProfilePage.module.css";
+import toast from "react-hot-toast"
+
 const UserProfilePage = () => {
     const [fullName, setFullName] = useState('');
     const [personnelCode, setPersonnelCode] = useState('');
     const [workLocation, setWorkLocation] = useState('');
-    const [organization, setOrganization] = useState('')
+    const [organization, setOrganization] = useState('');
     const [isLoading, setIsLoading] = useState(true); // وضعیت بارگذاری
     const [profileIncomplete, setProfileIncomplete] = useState(false);
     const navigate = useNavigate();
+
     const companyList = [
         { value: "دفتر مرکزی تهران", label: "دفتر مرکزی تهران" },
         { value: "مدلل ماهیدشت(نازگل)", label: "مدلل ماهیدشت(نازگل)" },
@@ -26,33 +29,43 @@ const UserProfilePage = () => {
         { value: "نابدانه مدلل" , label: "نابدانه مدلل"},
         { value: "دامپروری باوان کلهر",  label: "دامپروری باوان کلهر"},
         { value: "دامپروری میلکان", label: "دامپروری میلکان"},
-        {value:"کلهر شیمی", label: "کلهر شیمی"}, 
+        { value:"کلهر شیمی", label: "کلهر شیمی"}, 
         {value: "ناب شکر",label: "ناب شکر",}, 
         {value: "اسکله بندر",label: "اسکله بندر"}, 
         {value: "سنگین بار کلهر", label: "سنگیم بار کلهر"}, 
         {value:"کلهر بار" ,label: "باربری کلهر بار"}, 
     ];
-    const companyUnit =[
-        {id:1, label: "مدیریت"},
-        {id:2, label: "مالی"},
-        {id:3, label: "تدارکات",},{id:4, label: "کارگزینی",},{id:5, label: "برنامه ریزی و انبارها"},{id:6, label:"انفورماتیک" }, {id:7, label:"اداری گلاره کلهر"},
-        {id:8, label:"فروش روغن نباتی" },{id:9 ,label:" فروش روغنکشی" },{id:10 , label:"ایمنی و بهداشت" },{id:11 , label:  "تحقیق و توسعه"},{id:12 , label:"مخابرات" },{id:13 , label: "آموزش"},
-        {id: 14, label: "حراست"},{id:15 , label: "لیسیتین"},{id:16 , label:"ساختمانی" },{id:17 , label:   "بارگیری کنجاله"},{id:18 , label: "پلیت کنی فاز1"},
-        {id:19 , label:"پلیت کنی فاز2" },{id:20 , label:"آماده سازی فاز1" },{id:21, label: "آماده سازی فاز2"},{id:22 , label:"جوشکاری روغنکشی"},
-        {id:23 , label:"جوشکاری روغن نباتی" },{id:24 , label: "آزمایشگاه روغنکشی"},
-        {id:25 , label: "آزمایشگاه کنترل کیفیت روغن نباتی"},{id:26 , label: "آزمایشگاه تضمین کیفیت روغن نباتی"},
-        {id:27 , label: "انبار کنجاله"}
-        
-    ]
-/* 
-        ,"سیلو","انبار قطعات وملزومات روغنکشی","انبار قطعات و ملزومات روغن نباتی",
-        "انبار محصول","انبار مواد اولیه روغن نباتی","واحد برق روغنکشی","واحد برق روعن نباتی",
-        "تاسیسات روغن نباتی","مکانیک","مارگارین","پرکنی جامد","پرکنی بطری","الکترولایزر",
-        "دیگ بخار روغن نباتی ","دیگ بخار روغنکشی","رستوران","سس","پالایش","چاپ","قطعه سازی",
-        "آب آشامیدنی","گلخانه","تخلیه دانه","خدمات","سایر",
-         */
-        
- 
+
+    const companyUnit = [
+        { id: 1, label: "مدیریت" },
+        { id: 2, label: "مالی" },
+        { id: 3, label: "تدارکات" },
+        { id: 4, label: "کارگزینی" },
+        { id: 5, label: "برنامه ریزی و انبارها" },
+        { id: 6, label: "انفورماتیک" },
+        { id: 7, label: "اداری گلاره کلهر" },
+        { id: 8, label: "فروش روغن نباتی" },
+        { id: 9, label: "فروش روغنکشی" },
+        { id: 10, label: "ایمنی و بهداشت" },
+        { id: 11, label: "تحقیق و توسعه" },
+        { id: 12, label: "مخابرات" },
+        { id: 13, label: "آموزش" },
+        { id: 14, label: "حراست" },
+        { id: 15, label: "لیسیتین" },
+        { id: 16, label: "ساختمانی" },
+        { id: 17, label: "بارگیری کنجاله" },
+        { id: 18, label: "پلیت کنی فاز1" },
+        { id: 19, label: "پلیت کنی فاز2" },
+        { id: 20, label: "آماده سازی فاز1" },
+        { id: 21, label: "آماده سازی فاز2" },
+        { id: 22, label: "جوشکاری روغنکشی" },
+        { id: 23, label: "جوشکاری روغن نباتی" },
+        { id: 24, label: "آزمایشگاه روغنکشی" },
+        { id: 25, label: "آزمایشگاه کنترل کیفیت روغن نباتی" },
+        { id: 26, label: "آزمایشگاه تضمین کیفیت روغن نباتی" },
+        { id: 27, label: "انبار کنجاله" }
+    ];
+
     useEffect(() => {
         const verifyProfile = async () => {
             const { response, error } = await checkProfile();
@@ -73,6 +86,10 @@ const UserProfilePage = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        if (!fullName || !personnelCode || !workLocation || !organization) {
+            toast.error("لطفاً تمام فیلدها را پر کنید.");
+            return;
+        }
         const { response, error } = await updateProfile({ fullName, personnelCode, workLocation, organization });
         if (response) {
             navigate('/');
@@ -83,7 +100,7 @@ const UserProfilePage = () => {
     };
 
     if (isLoading) {
-        return <div>Loading...</div>; 
+        return <div>در حال بارگذاری...</div>; 
     }
 
     if (!profileIncomplete) {
@@ -114,54 +131,33 @@ const UserProfilePage = () => {
                         value={personnelCode}
                         onChange={(e) => setPersonnelCode(e.target.value)}
                         placeholder="کد پرسنلی"
+                        required
                     />
                 </div>
                 <div>
-                    <label htmlFor="organization">نام شرکت خود را واردکنید</label>
-                    {/* <select
-                        id="organization"
-                        value={organization}
-                        onChange={(e) => setOrganization(e.target.value)}>
-                         <option value="">انتخاب شرکت</option>
-                         {companyList.map((company) => (
-                            <option key={company} value={company}>{company}</option>
-                         ))}
-
-                    </select> */}
+                    <label htmlFor="workLocation">محل کار را انتخاب کنید:</label>
+                    
                     <Select
-                        id='organization'
+                        id="workLocation"
                         options={companyList}
-                        value={companyList.find(company => company.value === organization) || null}
-                        onChange={(e) => setOrganization(e? e.value : "")}
-                        placeholder="انتخاب شرکت"
-                    />
+                        getOptionLabel={(option) => option.label}
+                        onChange={(newValue) => setWorkLocation(newValue ? newValue.value : '')}
+                        placeholder="شرکت محل فعالیت"
                         
-                   
-                </div>
-                {/* <div>
-                    <label htmlFor="workLocation">نام واحد کار را وارد کنید:</label>
-                    <input
-                        id="workLocation"
-                        type="text"
-                        value={workLocation}
-                        onChange={(e) => setWorkLocation(e.target.value)}
-                        placeholder="واحد شرکتی"
                     />
-                </div> */}
+                </div>
                 <div>
-                    <label htmlFor="workLocation">نام واحد کار را وارد کنید:</label>
-                    <Autocomplete
-                        id="workLocation"
+                    <label htmlFor="organization">واحد سازمانی را انتخاب کنید:</label>
+                    <Select
+                        id="organization"
                         options={companyUnit}
-                        getOptionLabel={(option) =>  option.label }
-                        value={companyUnit.find(unit => unit.label === workLocation) || null}
-                        onChange={(e, newValue) => setWorkLocation(newValue? newValue.value: "")}
-                        renderInput={(params) => (
-                            <TextField {...params} placeholder="واحد شرکتی" />
-                        )}
+                        getOptionLabel={(option) => option.label}
+                        onChange={(newValue) => setOrganization(newValue ? newValue.label : '')}
+                        placeholder="واحد سازمانی"
+                        
                     />
                 </div>
-                <button type="submit">اعمال تغییرات</button>
+                <button type="submit">ثبت اطلاعات</button>
             </form>
         </div>
     );

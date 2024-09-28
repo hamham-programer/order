@@ -17,8 +17,8 @@ function Footer() {
           <div className={styles.footerLinks}>
             <h3>بخش های سایت</h3>
             <ul>
-              <li><a href="#">خدمات</a></li>
-              <li><a href="#">نظرسنجی</a></li>
+              <li><a href="/services">خدمات</a></li>
+              <li><a href="/surveys">نظرسنجی</a></li>
               <li><a href="#">تماس با ما</a></li>
             </ul>
           </div> 

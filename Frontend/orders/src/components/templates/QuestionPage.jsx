@@ -39,61 +39,67 @@ const QuestionPage = () => {
 
   return (
     <div className={styles.container}>
-      <h2 className={styles.title}>مدیریت سوالات</h2>
+  <h2 className={styles.title}>مدیریت سوالات</h2>
+  <div className={styles.formGroup}>
+    <div className={styles.inputGroup}>
+      <input
+        type="text"
+        placeholder="متن سوال"
+        value={newQuestion.text}
+        onChange={(e) => setNewQuestion({ ...newQuestion, text: e.target.value })}
+        className={styles.input}
+      />
+      <select
+        value={newQuestion.type}
+        onChange={(e) => setNewQuestion({ ...newQuestion, type: e.target.value })}
+        className={styles.select}
+      >
+        <option value="text">متن</option>
+        <option value="multiple-choice">چند گزینه‌ای</option>
+      </select>
+    </div>
+
+    {newQuestion.type === 'multiple-choice' && (
       <div className={styles.formGroup}>
         <input
           type="text"
-          placeholder="متن سوال"
-          value={newQuestion.text}
-          onChange={(e) => setNewQuestion({ ...newQuestion, text: e.target.value })}
+          placeholder="گزینه جدید"
+          value={newOption}
+          onChange={(e) => setNewOption(e.target.value)}
           className={styles.input}
         />
-        <select
-          value={newQuestion.type}
-          onChange={(e) => setNewQuestion({ ...newQuestion, type: e.target.value })}
-          className={styles.select}
-        >
-          <option value="text">متن</option>
-          <option value="multiple-choice">چند گزینه‌ای</option>
-        </select>
-
-        {newQuestion.type === 'multiple-choice' && (
-          <div className={styles.formGroup}>
-            <input
-              type="text"
-              placeholder="گزینه جدید"
-              value={newOption}
-              onChange={(e) => setNewOption(e.target.value)}
-              className={styles.input}
-            />
-            <button onClick={handleAddOption} className={styles.button}>افزودن گزینه</button>
-            <ul className={styles.optionList}>
-              {newQuestion.options.map((option, index) => (
-                <li key={index} className={styles.optionItem}>{option}</li>
+        <button onClick={handleAddOption} className={styles.button}>افزودن گزینه</button>
+        <ul className={styles.optionList}>
+          {newQuestion.options.map((option, index) => (
+            <li key={index} className={styles.optionItem}>{option}</li>
+          ))}
+        </ul>
+      </div>
+    )}
+    <button onClick={handleCreateQuestion} className={styles.button}>ایجاد سوال</button>
+  </div>
+  <ul className={styles.questionList}>
+    {questions.map((question) => (
+      <li key={question._id} className={styles.questionItem}>
+        <div className={styles.questionContent}>
+          <div className={styles.questionText}>{question.text}</div>
+          <div className={styles.questionType}>{question.type}</div>
+          {question.type === 'multiple-choice' && (
+            <ul className={styles.questionOptions}>
+              {question.options.map((option, index) => (
+                <li key={index}>{option}</li>
               ))}
             </ul>
-          </div>
-        )}
-        <button onClick={handleCreateQuestion} className={styles.button}>ایجاد سوال</button>
-      </div>
-      <ul className={styles.questionList}>
-        {questions.map((question) => (
-          <li key={question._id} className={styles.questionItem}>
-            {question.text} - {question.type}
-            {question.type === 'multiple-choice' && (
-              <ul className={styles.questionOptions}>
-                {question.options.map((option, index) => (
-                  <li key={index}>{option}</li>
-                ))}
-              </ul>
-            )}
-            <button onClick={() => handleDeleteQuestion(question._id)} className={styles.deleteButton}>
-              حذف سوال
-            </button>
-          </li>
-        ))}
-      </ul>
-    </div>
+          )}
+        </div>
+        <button onClick={() => handleDeleteQuestion(question._id)} className={styles.deleteButton}>
+          حذف سوال
+        </button>
+      </li>
+    ))}
+  </ul>
+</div>
+
   );
 };
 

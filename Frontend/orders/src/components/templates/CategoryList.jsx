@@ -10,7 +10,6 @@ function CategoryList() {
 
     const mutation = useMutation(deleteCategory, {
         onSuccess: () => {
-            // پس از حذف موفقیت‌آمیز، داده‌ها را دوباره بارگذاری می‌کنیم
             queryClient.invalidateQueries(["get-categories"]);
         },
         onError: () => {
@@ -29,27 +28,33 @@ function CategoryList() {
     }
 
     return (
-        <div className={styles.list}>
-            <h3>لیست دسته‌بندی‌ها:</h3>
+        <div className={styles.container}>
+            <h3 className={styles.header}>لیست دسته‌بندی‌ها:</h3>
             {data?.data?.length > 0 ? (
-                <ul>
+                <ul className={styles.categoryList}>
                     {data?.data.map((category) => (
-                        <li key={category._id}>
-                            <img src={`/${category.icon}.svg`} alt={`${category.name} icon`} className={styles.icon} />
-                            <span>{category.name}</span> 
-                            <span>{category.slug}</span>
-                            <button 
-                                onClick={() => handleDelete(category._id)} 
-                                className={styles.deleteButton}
-                                disabled={mutation.isLoading}
-                            >
-                                حذف
-                            </button>
+                        <li key={category._id} className={styles.categoryItem}>
+                            <div className={styles.categoryItemContent}>
+                                <img src={`/${category.icon}.svg`} alt={`${category.name} icon`} className={styles.icon} />
+                                <div>
+                                    <span className={styles.categoryTitle}>{category.name}</span> 
+                                    <span className={styles.categorySlug}>{category.slug}</span>
+                                </div>
+                            </div>
+                            <div className={styles.categoryItemActions}>
+                                <button 
+                                    onClick={() => handleDelete(category._id)} 
+                                    className={styles.deleteButton}
+                                    disabled={mutation.isLoading}
+                                >
+                                    حذف
+                                </button>
+                            </div>
                         </li>
                     ))}
                 </ul>
             ) : (
-                <p>هیچ دسته‌بندی‌ای موجود نیست.</p>
+                <p className={styles.noCategoryText}>هیچ دسته‌بندی‌ای موجود نیست.</p>
             )}
         </div>
     );
