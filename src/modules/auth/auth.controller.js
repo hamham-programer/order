@@ -74,14 +74,17 @@ async checkOTP(req, res, next) {
     }
     async logOut(req, res, next) {
         try {
-            return res.clearCookie(CookieNames.AccessToken).status(200).json({
+            res.clearCookie(CookieNames.AccessToken);
+            res.clearCookie(CookieNames.RefreshToken);
+            
+            return res.status(200).json({
                 message: AuthMessage.LogoutSuccessfuly
-            })
+            });
             
         } catch (error) {
-            next(error)
-            
+            next(error);
         }
     }
+    
 }
 module.exports = new AuthController()

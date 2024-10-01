@@ -62,9 +62,9 @@ function HomePage() {
       <div className={styles.contactSection}>
         <p class={styles.contactTitle}>راه‌های ارتباطی با گروه مدلل</p>
         <div className={styles.socialLinks}>
-          <a href="#" className={styles.socialIconInstagram}><i class="fa-brands fa-instagram"></i></a>
-          <a href="#" className={styles.socialIconLinkedin}><i class="fa-brands fa-linkedin"></i></a>
-          <a href="#" className={styles.socialIconWhatsapp}><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="https://chat.whatsapp.com/EMwaGckJjLV42iBFt1hY6T" className={styles.socialIconInstagram}><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://ir.linkedin.com/company/modalal" className={styles.socialIconLinkedin}><i class="fa-brands fa-linkedin"></i></a>
+          <a href="https://chat.whatsapp.com/EMwaGckJjLV42iBFt1hY6T" className={styles.socialIconWhatsapp}><i class="fa-brands fa-whatsapp"></i></a>
           <a href="#" className={styles.socialIconTelegram}><i class="fa-brands fa-telegram"></i></a>
           <a href="#" className={styles.socialIconComment}><i class="fa-solid fa-circle-check"></i></a>
           <a href="#" className={styles.socialIconEmail}><i class="fa-regular fa-envelope"></i></a>

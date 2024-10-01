@@ -28,6 +28,17 @@
   border: 1px solid #ddd;
   border-radius: 8px;
   width: 415px;
+  text-align: center;
+}
+.inputd{
+  padding: 10px 20px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  width: 105px;
+  text-align: center;
+  color: gray;
+
 }
 
 .button {
@@ -78,7 +89,8 @@
 .surveyDescription {
   font-size: 1.1rem;
   color: #666;
-  margin-right: 20px; /* فاصله از دکمه‌ها */
+  margin-left: auto; /* فاصله از دکمه‌ها */
+  text-align: center;
 }
 
 .actions {

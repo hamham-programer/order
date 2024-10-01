@@ -45,6 +45,7 @@ const SurveyDetailPage = () => {
     const formattedAnswers = survey.questions.map(question => ({
       questionId: question._id,
       answer: responses[question._id] || '',
+      answerType: question.type,
     }));
 
     try {
@@ -52,7 +53,8 @@ const SurveyDetailPage = () => {
       await submitResponse({
         surveyId,
         user: userId,
-        answers: JSON.stringify(formattedAnswers), // تبدیل به JSON
+        /*  answers: JSON.stringify(formattedAnswers), // تبدیل به JSON  */
+        answers: formattedAnswers 
       });
       setSuccess(true);
       setError(null);

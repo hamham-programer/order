@@ -7,7 +7,9 @@ const ResponseSchema = new Schema(
     answers: [
       {
         questionId: { type: Types.ObjectId, ref: "Question", required: true }, // لینک به سوال
-        answer: { type: String, required: true }, // پاسخ به سوال (می‌تواند رشته، عدد، یا گزینه انتخابی باشد)
+        answer: { type: Schema.Types.Mixed, required: true }, // پاسخ به سوال (می‌تواند رشته، عدد، یا گزینه انتخابی باشد)
+        answerType: { type: String, enum: ['multiple-choice', 'text'], required: true }, // نوع پاسخ
+
       },
     ],
   },

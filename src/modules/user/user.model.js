@@ -15,7 +15,7 @@ const UserSchema = new Schema({
     personnelCode: { type: String }, 
     workLocation: { type: String },  
     organization: {type: String},
-    role: { type: String, default: "ADMIN" },
+    role: { type: String, default: "USER" },
     isProfileCompleted: { type: Boolean, default: false },  // فیلد  برای بررسی تکمیل بودن پروفایل
 }, { timestamps: true });
 
