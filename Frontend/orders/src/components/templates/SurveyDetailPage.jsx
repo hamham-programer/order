@@ -37,7 +37,7 @@ const SurveyDetailPage = () => {
     );
 
     if (!allQuestionsAnswered) {
-      alert('Please answer all questions.');
+      alert('لطفا به همه سوالات پاسخ دهید.');      
       return;
     }
 
@@ -62,7 +62,7 @@ const SurveyDetailPage = () => {
       navigate('/');
     } catch (error) {
       console.error('Error submitting responses:', error.response ? error.response.data : error.message);
-      setError('Failed to submit responses');
+      setError('خطا در ثبت پاسخ ها لطفا علت را بررسی کنید');
       setSuccess(false);
     }
   };

@@ -37,10 +37,7 @@ function Header() {
         <Link to="/">خانه</Link>
         <Link to="/services">خدمات</Link>
         <Link to="/surveys">نظرسنجی</Link>
-{/* 
-        <a href="/">خانه</a>
-        <a href="/">خدمات</a>
-        <a href="/">نظرسنجی</a> */}
+
       </div>
 
 
@@ -50,14 +47,14 @@ function Header() {
       <div>
         <div className={styles.profileContainer}>
           <div className={styles.profile} onClick={toggleDropdown}>
-            <img src="../../public/profile.svg" alt="Profile" />
+            <img src="/profile.svg" alt="Profile" />
             <p>مدلل من</p>
           </div>
           {isDropdownOpen && (
             <div className={styles.dropdownMenu}>
-              <Link to="/admin"><img src="../../public/profile.svg" alt="Profile" />پروفایل</Link>
-              <Link to="/settings"><img src="../../public/service.svg" alt="Settings" />تنظیمات</Link>
-              <Link to="/logout" onClick={handleLogout}><img src="../../public/home.svg" alt="Logout" />خروج</Link>
+              <Link to="/admin"><img src="/profile.svg" alt="Profile" />پروفایل</Link>
+              <Link to="/settings"><img src="/service.svg" alt="Settings" />تنظیمات</Link>
+              <Link to="/logout" onClick={handleLogout}><img src="/home.svg" alt="Logout" />خروج</Link>
             </div>
           )}
           {isServicesPage && ( // نمایش آیکون سبد خرید فقط در صفحه خدمات
