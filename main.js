@@ -7,14 +7,14 @@ const { AllExceptionHandler } = require("./src/common/exception/all-exception.ha
 const dotenv = require("dotenv").config()
 const cors = require("cors")
 async function main() {
-    const port = process.env.PORT || 5931
+    const port = process.env.PORT
     const app = express()
     require("./src/config/mongoose.config")
     app.use(express.json())
     app.use(express.urlencoded({extended:true}))
     app.use(cookieParser(process.env.COOKIE_SECRET_KEY))
     app.use(cors({
-        origin: ['http://localhost:5173', "https://panel.kavenegar.com", "https://nex-codes.ir","http://nex-codes.ir"],
+        origin: ['http://localhost:5173', "https://panel.kavenegar.com"],
         methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE', 'OPTIONS'],
         allowedHeaders: ['Content-Type', 'Authorization', 'withCredentials'],
         credentials: true // اجازه ارسال کوکی‌ها
@@ -33,7 +33,7 @@ async function main() {
     AllExceptionHandler(app)
     NotFoundHandler(app)
     app.listen(port, ()=>{
-        console.log(`https://api.nex-codes.ir:${port}`);
+        console.log(`http://localhost:${port}`);
         
     })
 
